@@ -1,0 +1,128 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<div class="row ">
+  <div class="col-8 offset-2">
+    <h3>Edit listing</h3>
+    <form
+      action="/listings/<%=  listing._id %>?_method=PUT "
+      method="post"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-2">
+        <label for="title" class="form-label"
+          >Title
+          <input
+            type="text"
+            name="listing[title]"
+            id="title"
+            value="<%= listing.title %>"
+            class="form-control large-input"
+            required
+          />
+          <div class="valid-feedback">Tittle looks Good</div>
+          <div class="invalid-feedback">Enter valid Title</div>
+        </label>
+      </div>
+<div class="mb-3">
+  <img src="<%= originalImageUrl %>"  class="card-img-top"  alt="preview image">
+</div>
+      <div class="mb-2">
+        <label for="image" class="form-label"
+          >Upload New Image
+          <input
+            class="form-control large-input"
+            type="file"
+            name="listing[image]"
+            id="image"
+          />
+        </label>
+      </div>
+      <div class="row">
+      <div class="mb-2 col-md-4">
+        <label for="price" class="form-label"
+          >Price:
+          <input
+            class="form-control"
+            type="number"
+            name="listing[price]"
+            id="price"
+            value="<%= listing.price %>"
+            required
+          />
+          <div class="valid-feedback">looks Good</div>
+          <div class="invalid-feedback">Enter valid Price</div>
+        </label>
+      </div>
+      
+      <div class="mb-2 col-md-8">
+        <label for="country" class="form-label"
+          >Country:
+          <input
+            class="form-control "
+            type="text"
+            name="listing[country]"
+            id="country"
+            value="<%= listing.country %>"
+            required
+          />
+          <div class="valid-feedback">looks Good</div>
+          <div class="invalid-feedback">Enter valid country</div>
+        </label>
+      </div>
+      </div>
+
+      <div class="mb-2">
+        <label for="location" class="form-label"
+          >Location:
+          <input
+            class="form-control large-input"
+            type="text"
+            name="listing[location]"
+            id="location"
+            value="<%= listing.location %>"
+            required
+          />
+
+          <div class="valid-feedback">looks Good</div>
+          <div class="invalid-feedback">Enter valid Location</div>
+        </label>
+      </div>
+      <div class="mb-2">
+        <label for="category" class="form-label"> Select Category
+        <select name="listing[category]" id="category" class="form-select large-input">
+          
+          <option value="mountains"<%= listing.category === 'mountains' ? 'selected' : '' %>>Mountains</option>
+          <option value="arctic"<%= listing.category === 'arctic' ? 'selected' : '' %>>Arcitc</option>
+          <option value="farms"<%= listing.category === 'farms' ? 'selected' : '' %>>Farms</option>
+          <option value="amazon"<%= listing.category === 'amazon' ? 'selected' : '' %>>River</option>
+          <option value="camping"<%= listing.category === 'camping' ? 'selected' : '' %>>Camping</option>
+          <option value="iconic-cities"<%= listing.category === 'iconic-cities' ? 'selected' : '' %>>Iconic Cities</option>
+          <option value="domes"<%= listing.category === 'domes' ? 'selected' : '' %>>Domes</option>
+          <option value="boats"<%= listing.category === 'boats' ? 'selected' : '' %>>Boats</option>
+          <option value="rooms"<%= listing.category === 'rooms' ? 'selected' : '' %>>Rooms</option>
+          <option value="castles"<%= listing.category === 'castles' ? 'selected' : '' %>>Castles</option>
+        </select>
+         </label>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label"
+          >Description:
+          <textarea
+            class="form-control large-input"
+            name="listing[description]"
+            id="description"
+            cols ="45"
+rows="3"
+            required
+            style="resize:vertical; overflow: auto;"
+          >
+           <%= listing.description %></textarea>
+          <div class="valid-feedback">looks Good</div>
+          <div class="invalid-feedback">Brief description</div>
+        </label>
+      </div>
+      <button class="btn btn-dark">Edit-Now</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,135 @@
+<% layout ("layouts/boilerplate") -%>
+
+<div id="filters">
+  <div class="filter">
+    <div>
+      <a href="/listings" class="filter-link"
+        ><i class="fa-solid fa-globe"></i>
+
+      </div>
+        <p>All Place</p>
+      </a>
+      </div>
+  <div class="filter">
+    <div>
+      <a href="/listings/category/?category=trending" class="filter-link"
+        ><i class="fa-solid fa-fire"></i>
+
+      </div>
+        <p>Trending</p>
+      </a>
+      </div>
+    <div class="filter">
+      <div>
+        <a href="/listings/category/?category=rooms" class="filter-link">
+          <i class="fa-solid fa-bed"></i>
+        </div>
+          <p>Rooms</p>
+        </a>
+    </div>
+
+    <div class="filter">
+      <div>
+        <a href="/listings/category/?category=iconic-cities" class="filter-link">
+          <i class="fa-solid fa-mountain-city"></i>
+        </div>
+          <p>Iconic Cities</p>
+        </a>
+    </div>
+
+    <div class="filter">
+      <div>
+        <a href="/listings/category/?category=mountains" class="filter-link">
+          <i class="fas fa-mountain"></i>
+        </div>
+          <p>Mountains</p>
+        </a>
+    </div>
+    <div class="filter">
+      <div>
+        <a href="/listings/category/?category=castles" class="filter-link">
+          <i class="fa fa-fort-awesome" aria-hidden="true"></i>
+        </div>
+          <p>Castles</p>
+        </a>
+    </div>
+    <div class="filter">
+      <div>
+        <a href="/listings/category/?category=amazon" class="filter-link">
+          <i class="fa-solid fa-person-swimming"></i>
+        </div>
+          <p>Amazon</p>
+        </a>
+    </div>
+    <div class="filter">
+      <div>
+        <a href="/listings/category/?category=camping" class="filter-link">
+          <i class="fas fa-campground"></i>
+        </div>
+          <p>Camping</p>
+        </a>
+    </div>
+    <div class="filter">
+      <div>
+        <a href="/listings/category/?category=farms" class="filter-link">
+          <i class="fa-solid fa-cow" aria-hidden="true"></i>
+        </div>
+          <p>Farms</p>
+        </a>
+    </div>
+    <div class="filter">
+      <div>
+        <a href="/listings/category/?category=arctic" class="filter-link">
+        <i class="fa-regular fa-snowflake"></i>
+      </div>
+          <p>Arctic</p>
+        </a>
+    </div>
+    <div class="filter">
+      <div>
+        <a href="/listings/category/?category=domes" class="filter-link">
+        <i class="fa-solid fa-igloo"></i>
+      </div>
+          <p>Domes</p>
+        </a>
+    </div>
+    <div class="filter">
+      <div>
+        <a href="/listings/category/?category=boats" class="filter-link">
+        <i class="fa-solid fa-ship"></i>
+      </div>
+          <p>Boats</p>
+        </a>
+    </div>
+   
+    <div class="tax-toggle">
+      <div class="form-check-reverse form-switch">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+  <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes </label>
+</div>
+    </div>
+  </div>
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+    <% for (let listing of allListings){ %>
+      <a href="/listings/<%=listing._id  %>" class="listing-link">
+
+      <div class="card col listing-card">
+        <img
+        src="<%=listing.image.url  %>"
+        class="card-img-top"
+        alt="listing image"
+        style=" height: 20rem;"
+        />
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b> <%= listing.title %> <br /> </b>
+            &#x20B9; <%= listing.price.toLocaleString("en-IN") %>/night
+            <i class="tax-info"> &nbsp;+18% GST</i>
+          </p>
+      </div>
+    </div>
+  </a>
+    <% } %>
+  </div>
+
