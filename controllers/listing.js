@@ -132,5 +132,11 @@ module.exports.search= async(req,res)=>{
   console.log(req.query.search);
   let search = req.query.search;
   let allListings = await Listing.find({country:search})
-  res.render("listings/index.ejs",{allListings})
+  if(!allListings.country){
+    req.flash("error","This country Listing not exist");
+res.render("listings/index.ejs");
+  }else{
+
+    res.render("listings/index.ejs",{allListings})
+  }
 }
